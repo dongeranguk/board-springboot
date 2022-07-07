@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardList;
 	}
+	
+	@Override
+	public BoardDTO getBoardDetail(Long idx) {
+		return boardMapper.selectBoardDetail(idx);
+	}
 }

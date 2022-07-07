@@ -15,6 +15,7 @@ public class BoardDTO {
 	private int viewCnt;
 	private String noticeYn;
 	private String secretYn;
+	private String deleteYn;
 	private LocalDateTime insertTime;
 	private LocalDateTime updateTime;
 	private LocalDateTime deleteTime;
