@@ -19,9 +19,12 @@ public class BoardServiceImpl implements BoardService {
 	public boolean registerBoard(BoardDTO params) {
 		int queryResult = 0;
 		
-		// 쿼리가 정상적으로 실행되면 1을 반환함.
-		queryResult = boardMapper.insertBoard(params);
-		
+		if(params.getIdx() == null) {
+			queryResult = boardMapper.insertBoard(params);
+		} else {
+			// 쿼리가 정상적으로 실행되면 1을 반환함.
+			queryResult = boardMapper.updateBoard(params);
+		}
 		//정상적으로 실행되면 true, 아니면 false;
 		return (queryResult == 1) ? true : false;
 	}

@@ -22,7 +22,23 @@ public class BoardController {
 	@GetMapping(value = "/board/write.do")
 	public String openBoardWrite(@RequestParam(value = "idx", required = false) Long idx, Model model) {
 
-		model.addAttribute("board", new BoardDTO());
+		//idx가 없다면 게시글 없는 상태이므로
+		//생성한 BoardDTO 타입의 board에 null이 저장
+		if(idx == null) {
+			model.addAttribute("board", new BoardDTO());
+		} 
+		// idx가 있다면 게시글 존재하므로
+		// 게시글을 조회하고, 그 정보를 model에 담아 리턴
+		else {
+			BoardDTO board = boardService.getBoardDetail(idx);
+			
+			// 아무 게시글이 없다면,
+			if(board == null) {
+				return "redirect:/board/list.do";
+			}
+			
+			model.addAttribute("board", board);
+		}
 
 		return "board/write";
 	}
@@ -41,7 +57,7 @@ public class BoardController {
 			// TODO => 시스템에 문제가 발생하였다는 메시지 전달
 		}
 
-		return "redirect:/borad/list.do";
+		return "redirect:/board/list.do";
 	}
 	
 	@GetMapping(value = "/board/list.do")

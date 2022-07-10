@@ -67,4 +67,18 @@
 	   AND DELETE_YN = 'N'
 	   AND IDX = #{idx}
 </select>
+
+<update id="updateBoard" parameterType="BoardDTO">
+	UPDATE
+		TB_BOARD
+	SET
+		  UPDATE_TIME = SYSDATE
+		, TITLE = #{title}
+		, WRITER = #{writer}
+		, CONTENT = #{content}
+		, NOTICE_YN = NVL(#{notice_yn, jdbcType=VARCHAR}, 'N')
+		, SECRET_YN = NVL(#{secret_yn, jdbcType=VARCHAR}, 'N')
+	WEHRE
+		IDX = #{idx}
+</update>
 </mapper>

@@ -13,4 +13,5 @@ public interface BoardService {
 	
 	//게시글 상세보기
 	public BoardDTO getBoardDetail(Long idx);
+	
 }

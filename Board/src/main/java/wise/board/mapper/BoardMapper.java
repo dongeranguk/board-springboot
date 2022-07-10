@@ -16,4 +16,6 @@ public interface BoardMapper {
 	public int selectBoardTotalCount();
 	
 	public BoardDTO selectBoardDetail(Long idx);
+
+	public int updateBoard(BoardDTO params);
 }
