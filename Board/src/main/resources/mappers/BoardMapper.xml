@@ -74,11 +74,11 @@
 	SET
 		  UPDATE_TIME = SYSDATE
 		, TITLE = #{title}
-		, WRITER = #{writer}
 		, CONTENT = #{content}
-		, NOTICE_YN = NVL(#{notice_yn, jdbcType=VARCHAR}, 'N')
-		, SECRET_YN = NVL(#{secret_yn, jdbcType=VARCHAR}, 'N')
-	WEHRE
+		, WRITER = #{writer}
+		, NOTICE_YN = NVL(#{noticeYn, jdbcType=VARCHAR}, 'N')
+		, SECRET_YN = NVL(#{secretYn, jdbcType=VARCHAR}, 'N')
+	WHERE
 		IDX = #{idx}
 </update>
 </mapper>
