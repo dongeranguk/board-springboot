@@ -85,4 +85,27 @@ public class BoardController {
 		model.addAttribute("board", board);
 		return "board/view";
 	}
+	
+	@PostMapping(value = "/board/delete.do")
+	public String deleteBoard(@RequestParam(value = "idx", required = false) Long idx) {
+		if(idx == null) {
+			return "redirect:/board/list.do";
+		}
+		
+		try {
+			System.out.println("try (idx = " + idx + ") ");
+			boolean isDeleted = boardService.deleteBoard(idx);
+			System.out.println("deleteBoard 실행 후 isDeleted : " + isDeleted);
+			
+			if(!isDeleted) {
+				// TODO => 게시글 삭제에 실패하였다는 메시지 전달
+			}
+		} catch(DataAccessException e) {
+			//TODO => 데이터베이스 처리과정에 문제가 발생하였다는 메시지 전달
+		} catch(Exception e) {
+			//TODO => 시스템에 문제가 발생하였다는 메시지 전달
+		}
+		
+		return "redirect:/board.list.do";
+	}
 }

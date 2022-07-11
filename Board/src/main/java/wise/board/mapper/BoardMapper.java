@@ -18,4 +18,6 @@ public interface BoardMapper {
 	public BoardDTO selectBoardDetail(Long idx);
 
 	public int updateBoard(BoardDTO params);
+	
+	public int deleteBoard(Long idx);
 }

@@ -81,4 +81,14 @@
 	WHERE
 		IDX = #{idx}
 </update>
+
+<update id="deleteBoard" parameterType="BoardDTO">
+	UPDATE
+		TB_BOARD
+	   SET
+	   	  DELETE_YN = 'Y'
+	   	, DELETE_TIME = SYSDATE
+	 WHERE
+	 	  IDX = #{idx}
+</update>
 </mapper>
